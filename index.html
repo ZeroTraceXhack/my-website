@@ -2,33 +2,34 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>शुभ दीपावली 🪔</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZeroTraceX | शुभ दीपावली</title>
 
 <style>
 *{box-sizing:border-box}
 
 body{
  margin:0;
- color:#fff4c4;
- text-align:center;
+ color:#fff4cf;
  font-family:Arial,sans-serif;
- background:radial-gradient(ellipse at top,#702000,#210016 65%,#08000c);
- overflow-x:hidden;
+ text-align:center;
+ background:radial-gradient(circle at top,#8b310b,#390b25 55%,#100619);
 }
 
-header{padding:35px 12px 10px}
+header{padding:25px 12px}
 
 h1{
- color:#ffdf76;
- font-size:clamp(32px,8vw,55px);
- text-shadow:0 0 15px #ff9d00,0 0 35px #ff5200;
+ color:#ffdc78;
+ font-size:clamp(32px,8vw,52px);
+ text-shadow:0 0 20px #ff8c00;
 }
 
-.subtitle{color:#ffe9b0;font-size:17px}
+h2{color:#ffd875}
 
-.lights{
- font-size:32px;
+p{line-height:1.7}
+
+.diyas{
+ font-size:38px;
  letter-spacing:8px;
  animation:glow 1.5s infinite alternate;
 }
@@ -38,81 +39,72 @@ h1{
  to{filter:brightness(1.6)}
 }
 
-.card{
- max-width:480px;
- margin:20px auto;
- padding:24px 18px;
+.box{
  width:92%;
- border:1px solid #ffcf65;
+ max-width:520px;
+ margin:20px auto;
+ padding:22px 16px;
+ border:1px solid #ffcf66;
  border-radius:20px;
- background:rgba(70,15,20,.8);
- box-shadow:0 0 25px #ff870055;
+ background:#401323dd;
+ box-shadow:0 0 22px #ffae3540;
 }
 
 input{
+ display:block;
  width:100%;
- padding:14px;
- border:1px solid #ffd36a;
- border-radius:9px;
+ padding:13px;
+ margin:12px 0;
+ border:1px solid #ffc95c;
+ border-radius:8px;
  font-size:16px;
- margin:10px 0;
 }
 
 button{
+ padding:12px 16px;
+ margin:6px 3px;
  border:0;
- padding:13px 18px;
- margin:7px 4px;
  border-radius:9px;
- background:linear-gradient(120deg,#ffe89b,#ffad24);
- color:#461000;
- font-weight:bold;
+ background:linear-gradient(120deg,#ffe7a0,#ffad24);
+ color:#4b1600;
  font-size:15px;
+ font-weight:bold;
  cursor:pointer;
 }
 
 button:active{transform:scale(.97)}
 
-#wish{
- color:#ffe7a1;
- font-size:25px;
- line-height:1.6;
- overflow-wrap:anywhere;
+#card{
+ padding:18px;
+ border:2px solid #ffd66b;
+ border-radius:15px;
+ background:linear-gradient(145deg,#711a32,#35102d);
 }
 
-.diyas{
- display:flex;
- justify-content:center;
- gap:20px;
- margin:22px 0;
-}
+#card h2{font-size:28px}
 
-.diya{
- font-size:48px;
- animation:glow 1s infinite alternate;
-}
-
-#fireworks{
- position:fixed;
- inset:0;
- width:100%;
- height:100%;
- pointer-events:none;
- z-index:5;
+#preview{
+ display:none;
+ max-width:100%;
+ max-height:240px;
+ margin:12px auto;
+ border:2px solid #ffd66b;
+ border-radius:10px;
 }
 
 #qr{
  display:none;
- margin:18px auto;
  width:220px;
  max-width:100%;
- background:white;
  padding:8px;
+ margin:15px auto;
+ background:white;
  border-radius:8px;
 }
 
 footer{
  padding:25px 10px;
- color:#e8cda0;
+ color:#ffe3ae;
  font-size:13px;
 }
 </style>
@@ -120,157 +112,220 @@ footer{
 
 <body>
 
-<canvas id="fireworks"></canvas>
-
 <header>
- <div class="lights">✨ 🪔 ✨</div>
+ <div class="diyas">✨ 🪔 ✨</div>
  <h1>शुभ दीपावली</h1>
- <p class="subtitle">प्रेम • प्रकाश • खुशियाँ • समृद्धि</p>
- <div class="diyas">
-  <span class="diya">🪔</span>
-  <span class="diya">🪔</span>
-  <span class="diya">🪔</span>
- </div>
+ <p>खुशियों की रोशनी आपके घर में सदा बनी रहे।</p>
+ <div class="diyas">🪔 🎆 🪔</div>
 </header>
 
-<section class="card">
- <h2>🎁 अपना दिवाली ग्रीटिंग कार्ड बनाएँ</h2>
- <p>अपना नाम लिखें और शुभकामनाएँ तैयार करें।</p>
+<section class="box">
+ <h2>🎁 अपना ग्रीटिंग कार्ड बनाएँ</h2>
 
  <input id="name" maxlength="50"
- placeholder="यहाँ अपना नाम लिखें">
+ placeholder="अपना नाम लिखें">
 
- <button onclick="makeWish()">✨ ग्रीटिंग बनाएँ</button>
+ <button onclick="makeCard()">ग्रीटिंग बनाएँ ✨</button>
 
- <div id="wish">
-  आप सभी को दीपावली की हार्दिक शुभकामनाएँ! 🪔
+ <div id="card">
+  <div style="font-size:35px">🪔 ✨ 🪔</div>
+  <h2>शुभ दीपावली!</h2>
+  <p id="wish">
+   आपके जीवन में सुख, शांति और समृद्धि आए।
+  </p>
+  <p>🎆 प्रेम बाँटें, खुशियाँ बाँटें 🎆</p>
  </div>
 
- <button onclick="shareWhatsApp()">📲 WhatsApp पर भेजें</button>
+ <button onclick="downloadCard()">📥 कार्ड डाउनलोड करें</button>
+ <button onclick="shareCard()">📲 WhatsApp पर शेयर करें</button>
+ <p id="cardmsg"></p>
 </section>
 
-<section class="card">
+<section class="box">
+ <h2>📸 अपनी फोटो लगाएँ</h2>
+ <p>अपनी पसंद की फोटो चुनकर ग्रीटिंग कार्ड में लगाएँ।</p>
+
+ <input type="file" id="photo" accept="image/*"
+ onchange="loadPhoto(event)">
+
+ <img id="preview" alt="आपकी चुनी हुई फोटो">
+
+ <p>फोटो चुनने के बाद कार्ड डाउनलोड कर सकते हैं।</p>
+</section>
+
+<section class="box">
  <h2>🎆 दिवाली आतिशबाजी</h2>
- <p>नीचे बटन दबाएँ और रोशनी का आनंद लें!</p>
- <button onclick="burst()">🎇 आतिशबाजी शुरू करें</button>
+ <p>रोशनी और रंगों का आनंद लें!</p>
+ <button onclick="fireworks()">आतिशबाजी शुरू करें 🎇</button>
+ <div id="firework" style="font-size:32px;min-height:45px"></div>
 </section>
 
-<section class="card">
- <h2>📱 मेरी दिवाली वेबसाइट का QR</h2>
- <p>QR कोड बनाकर दोस्तों के साथ साझा करें।</p>
+<section class="box">
+ <h2>📱 वेबसाइट का QR कोड</h2>
+ <p>QR कोड बनाकर दोस्तों को अपनी वेबसाइट दिखाएँ।</p>
+
  <button onclick="makeQR()">QR Code बनाएँ</button>
- <img id="qr" alt="दिवाली वेबसाइट QR कोड">
+ <img id="qr" alt="वेबसाइट का QR कोड">
  <p id="qrmsg"></p>
 </section>
 
 <footer>
- 🪔 शुभ दीपावली 🪔<br><br>
- © 2026 ZeroTraceX
+ <div class="diyas">🪔 ✨ 🪔</div>
+ <p>© 2026 ZeroTraceX<br>आप सभी को दीपावली की हार्दिक शुभकामनाएँ!</p>
 </footer>
 
 <script>
-const wish = document.getElementById("wish");
+let photoData = null;
 
-function makeWish(){
- const name = document.getElementById("name").value.trim();
+function makeCard(){
+ const name=document.getElementById("name").value.trim();
 
- if(!name){
-  alert("पहले अपना नाम लिखें!");
+ document.getElementById("wish").textContent =
+ name
+ ? name+" की ओर से आपको और आपके परिवार को दीपावली की हार्दिक शुभकामनाएँ! आपका जीवन खुशियों से भर जाए। 🪔"
+ : "आपके जीवन में सुख, शांति और समृद्धि आए।";
+
+ document.getElementById("cardmsg").textContent =
+ "आपका ग्रीटिंग कार्ड तैयार है!";
+}
+
+function loadPhoto(event){
+ const file=event.target.files[0];
+ if(!file)return;
+
+ if(!file.type.startsWith("image/")){
+  alert("कृपया एक इमेज चुनें।");
   return;
  }
 
- wish.textContent =
- "✨ "+name+" की ओर से आप सभी को दीपावली की हार्दिक शुभकामनाएँ! 🪔 आपका जीवन खुशियों और उजाले से भर जाए। 🎆";
+ if(file.size>8*1024*1024){
+  alert("कृपया 8 MB से छोटी फोटो चुनें।");
+  return;
+ }
 
- burst();
+ const reader=new FileReader();
+
+ reader.onload=function(){
+  photoData=reader.result;
+  const preview=document.getElementById("preview");
+  preview.src=photoData;
+  preview.style.display="block";
+ };
+
+ reader.readAsDataURL(file);
 }
 
-function shareWhatsApp(){
- const text = wish.innerText + "\n\nहमारी दिवाली वेबसाइट:\n" +
+function downloadCard(){
+ const name=document.getElementById("name").value.trim();
+ const canvas=document.createElement("canvas");
+ canvas.width=900;
+ canvas.height=1100;
+ const ctx=canvas.getContext("2d");
+
+ const grad=ctx.createLinearGradient(0,0,900,1100);
+ grad.addColorStop(0,"#74152d");
+ grad.addColorStop(1,"#250d2b");
+ ctx.fillStyle=grad;
+ ctx.fillRect(0,0,900,1100);
+
+ ctx.strokeStyle="#ffda75";
+ ctx.lineWidth=8;
+ ctx.strokeRect(22,22,856,1056);
+
+ ctx.textAlign="center";
+ ctx.fillStyle="#ffdf83";
+ ctx.font="bold 65px sans-serif";
+ ctx.fillText("शुभ दीपावली",450,120);
+
+ ctx.font="55px sans-serif";
+ ctx.fillText("🪔  ✨  🪔",450,200);
+
+ let y=260;
+
+ function finish(){
+  ctx.fillStyle="#fff1cc";
+  ctx.font="32px sans-serif";
+  ctx.fillText("आपके जीवन में खुशियाँ और",450,y);
+  ctx.fillText("समृद्धि बनी रहे!",450,y+48);
+
+  ctx.fillStyle="#ffdc78";
+  ctx.font="bold 30px sans-serif";
+  ctx.fillText(name ? "शुभकामनाएँ: "+name : "दीपावली की हार्दिक शुभकामनाएँ",450,1000);
+
+  const a=document.createElement("a");
+  a.download="ZeroTraceX-Diwali-Greeting.png";
+  a.href=canvas.toDataURL("image/png");
+  a.click();
+ }
+
+ if(photoData){
+  const img=new Image();
+  img.onload=function(){
+   const maxW=440,maxH=420;
+   const scale=Math.min(maxW/img.width,maxH/img.height);
+   const w=img.width*scale,h=img.height*scale;
+
+   ctx.drawImage(img,(900-w)/2,240,w,h);
+   y=240+h+55;
+   finish();
+  };
+  img.onerror=function(){
+   alert("फोटो नहीं खुली। दूसरी फोटो चुनकर कोशिश करें।");
+  };
+  img.src=photoData;
+ }else{
+  y=290;
+  finish();
+ }
+}
+
+async function shareCard(){
+ const name=document.getElementById("name").value.trim();
+ const message=
+ "🪔 "+(name ? name+" की ओर से " : "")+
+ "आपको और आपके परिवार को दीपावली की हार्दिक शुभकामनाएँ! 🎆\n"+
  window.location.href;
 
- window.open(
-  "https://wa.me/?text="+encodeURIComponent(text),
-  "_blank"
- );
+ if(navigator.share){
+  try{
+   await navigator.share({title:"शुभ दीपावली",text:message});
+  }catch(e){}
+ }else{
+  window.open(
+   "https://wa.me/?text="+encodeURIComponent(message),
+   "_blank"
+  );
+ }
+}
+
+function fireworks(){
+ const el=document.getElementById("firework");
+ el.textContent="🎆 ✨ 🎇 ✨ 🎆";
+ setTimeout(()=>el.textContent="",2500);
 }
 
 function makeQR(){
- const img = document.getElementById("qr");
- const msg = document.getElementById("qrmsg");
+ const img=document.getElementById("qr");
+ const msg=document.getElementById("qrmsg");
 
- if(location.protocol !== "https:"){
-  msg.textContent="वेबसाइट HTTPS पर खोलें।";
+ if(location.protocol!=="https:"){
+  msg.textContent="पहले वेबसाइट HTTPS पर खोलें।";
   return;
  }
 
  msg.textContent="QR कोड लोड हो रहा है...";
  img.style.display="block";
- img.onload=()=>msg.textContent="QR तैयार है! इसे स्कैन करें।";
+
+ img.onload=()=>msg.textContent="QR तैयार है! स्कैन करके वेबसाइट खोलें।";
+
  img.onerror=()=>{
   img.style.display="none";
-  msg.textContent="QR नहीं बना। इंटरनेट जाँचकर फिर कोशिश करें।";
+  msg.textContent="QR नहीं बन पाया। इंटरनेट जाँचकर फिर कोशिश करें।";
  };
 
  img.src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data="+
  encodeURIComponent(location.href);
 }
-
-/* आतिशबाजी एनिमेशन */
-const canvas=document.getElementById("fireworks");
-const ctx=canvas.getContext("2d");
-let particles=[];
-
-function resize(){
- canvas.width=window.innerWidth;
- canvas.height=window.innerHeight;
-}
-resize();
-window.addEventListener("resize",resize);
-
-function burst(){
- const x=Math.random()*canvas.width;
- const y=Math.random()*canvas.height*.55;
- const colors=["#ffd700","#ff5733","#ff66cc","#66ffff","#ffffff"];
-
- for(let i=0;i<65;i++){
-  const angle=Math.PI*2*i/65;
-  const speed=1+Math.random()*4;
-
-  particles.push({
-   x,y,
-   vx:Math.cos(angle)*speed,
-   vy:Math.sin(angle)*speed,
-   life:50+Math.random()*20,
-   color:colors[Math.floor(Math.random()*colors.length)]
-  });
- }
-}
-
-function animate(){
- ctx.clearRect(0,0,canvas.width,canvas.height);
-
- particles=particles.filter(p=>p.life>0);
-
- particles.forEach(p=>{
-  p.x+=p.vx;
-  p.y+=p.vy;
-  p.vy+=.035;
-  p.life--;
-
-  ctx.globalAlpha=Math.min(1,p.life/25);
-  ctx.fillStyle=p.color;
-  ctx.beginPath();
-  ctx.arc(p.x,p.y,2,0,Math.PI*2);
-  ctx.fill();
- });
-
- ctx.globalAlpha=1;
- requestAnimationFrame(animate);
-}
-animate();
-
-setInterval(burst,1800);
 </script>
 
 </body>
