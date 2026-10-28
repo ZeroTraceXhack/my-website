@@ -3,182 +3,274 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZeroTraceX | Cyber World</title>
+<title>शुभ दीपावली 🪔</title>
 
 <style>
-* {
-    box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ color:#fff4c4;
+ text-align:center;
+ font-family:Arial,sans-serif;
+ background:radial-gradient(ellipse at top,#702000,#210016 65%,#08000c);
+ overflow-x:hidden;
 }
 
-body {
-    margin: 0;
-    background: #050807;
-    color: #00ff88;
-    font-family: Arial, sans-serif;
-    text-align: center;
+header{padding:35px 12px 10px}
+
+h1{
+ color:#ffdf76;
+ font-size:clamp(32px,8vw,55px);
+ text-shadow:0 0 15px #ff9d00,0 0 35px #ff5200;
 }
 
-header {
-    padding: 22px 10px;
-    border-bottom: 1px solid #00ff88;
-    background: #09130e;
+.subtitle{color:#ffe9b0;font-size:17px}
+
+.lights{
+ font-size:32px;
+ letter-spacing:8px;
+ animation:glow 1.5s infinite alternate;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 27px;
-    text-shadow: 0 0 12px #00ff88;
+@keyframes glow{
+ from{filter:brightness(.8)}
+ to{filter:brightness(1.6)}
 }
 
-header p {
-    color: #a4ffca;
-    font-size: 13px;
+.card{
+ max-width:480px;
+ margin:20px auto;
+ padding:24px 18px;
+ width:92%;
+ border:1px solid #ffcf65;
+ border-radius:20px;
+ background:rgba(70,15,20,.8);
+ box-shadow:0 0 25px #ff870055;
 }
 
-.box {
-    margin: 35px 15px;
-    padding: 25px 18px;
-    background: #0b1510;
-    border: 1px solid #00ff88;
-    border-radius: 15px;
-    box-shadow: 0 0 18px #003d22;
+input{
+ width:100%;
+ padding:14px;
+ border:1px solid #ffd36a;
+ border-radius:9px;
+ font-size:16px;
+ margin:10px 0;
 }
 
-h2 {
-    color: #00ff88;
+button{
+ border:0;
+ padding:13px 18px;
+ margin:7px 4px;
+ border-radius:9px;
+ background:linear-gradient(120deg,#ffe89b,#ffad24);
+ color:#461000;
+ font-weight:bold;
+ font-size:15px;
+ cursor:pointer;
 }
 
-.description {
-    color: #d4ffe4;
-    line-height: 1.7;
+button:active{transform:scale(.97)}
+
+#wish{
+ color:#ffe7a1;
+ font-size:25px;
+ line-height:1.6;
+ overflow-wrap:anywhere;
 }
 
-button {
-    background: #00ff88;
-    color: #041008;
-    border: none;
-    padding: 13px 22px;
-    margin: 10px 5px;
-    border-radius: 7px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
+.diyas{
+ display:flex;
+ justify-content:center;
+ gap:20px;
+ margin:22px 0;
 }
 
-button:active {
-    transform: scale(0.96);
+.diya{
+ font-size:48px;
+ animation:glow 1s infinite alternate;
 }
 
-button:hover {
-    box-shadow: 0 0 15px #00ff88;
+#fireworks{
+ position:fixed;
+ inset:0;
+ width:100%;
+ height:100%;
+ pointer-events:none;
+ z-index:5;
 }
 
-#message {
-    color: white;
-    margin-top: 18px;
-    overflow-wrap: anywhere;
+#qr{
+ display:none;
+ margin:18px auto;
+ width:220px;
+ max-width:100%;
+ background:white;
+ padding:8px;
+ border-radius:8px;
 }
 
-#qrcode {
-    display: none;
-    margin: 20px auto;
-    padding: 10px;
-    background: white;
-    border-radius: 8px;
-    max-width: 100%;
-}
-
-footer {
-    padding: 20px 10px;
-    color: #8cae99;
-    font-size: 12px;
+footer{
+ padding:25px 10px;
+ color:#e8cda0;
+ font-size:13px;
 }
 </style>
 </head>
 
 <body>
 
+<canvas id="fireworks"></canvas>
+
 <header>
-    <h1>⚡ ZeroTraceX ⚡</h1>
-    <p>WELCOME TO MY CYBER WORLD</p>
+ <div class="lights">✨ 🪔 ✨</div>
+ <h1>शुभ दीपावली</h1>
+ <p class="subtitle">प्रेम • प्रकाश • खुशियाँ • समृद्धि</p>
+ <div class="diyas">
+  <span class="diya">🪔</span>
+  <span class="diya">🪔</span>
+  <span class="diya">🪔</span>
+ </div>
 </header>
 
-<main>
-    <section class="box">
-        <h2>ACCESS GRANTED ✓</h2>
+<section class="card">
+ <h2>🎁 अपना दिवाली ग्रीटिंग कार्ड बनाएँ</h2>
+ <p>अपना नाम लिखें और शुभकामनाएँ तैयार करें।</p>
 
-        <p class="description">
-            मेरी वेबसाइट में आपका स्वागत है!<br>
-            Explore • Learn • Create
-        </p>
+ <input id="name" maxlength="50"
+ placeholder="यहाँ अपना नाम लिखें">
 
-        <button onclick="showMessage()">
-            ENTER CYBER WORLD
-        </button>
+ <button onclick="makeWish()">✨ ग्रीटिंग बनाएँ</button>
 
-        <p id="message">System Ready...</p>
-    </section>
+ <div id="wish">
+  आप सभी को दीपावली की हार्दिक शुभकामनाएँ! 🪔
+ </div>
 
-    <section class="box">
-        <h2>🌐 MY WEBSITE QR</h2>
+ <button onclick="shareWhatsApp()">📲 WhatsApp पर भेजें</button>
+</section>
 
-        <p class="description">
-            नीचे बटन दबाकर अपनी वेबसाइट का QR कोड बनाओ।
-            इसे स्कैन करके वेबसाइट खोली जा सकती है।
-        </p>
+<section class="card">
+ <h2>🎆 दिवाली आतिशबाजी</h2>
+ <p>नीचे बटन दबाएँ और रोशनी का आनंद लें!</p>
+ <button onclick="burst()">🎇 आतिशबाजी शुरू करें</button>
+</section>
 
-        <button onclick="generateQR()">
-            GENERATE QR CODE
-        </button>
-
-        <div>
-            <img id="qrcode" alt="Website QR Code">
-        </div>
-
-        <p class="description" id="qrstatus"></p>
-    </section>
-</main>
+<section class="card">
+ <h2>📱 मेरी दिवाली वेबसाइट का QR</h2>
+ <p>QR कोड बनाकर दोस्तों के साथ साझा करें।</p>
+ <button onclick="makeQR()">QR Code बनाएँ</button>
+ <img id="qr" alt="दिवाली वेबसाइट QR कोड">
+ <p id="qrmsg"></p>
+</section>
 
 <footer>
-    <p>© 2026 ZeroTraceX | Created with HTML & CSS</p>
-    <p>Keep Learning. Keep Building.</p>
+ 🪔 शुभ दीपावली 🪔<br><br>
+ © 2026 ZeroTraceX
 </footer>
 
 <script>
-function showMessage() {
-    document.getElementById("message").textContent =
-        "⚡ Welcome! Cyber World Activated.";
+const wish = document.getElementById("wish");
+
+function makeWish(){
+ const name = document.getElementById("name").value.trim();
+
+ if(!name){
+  alert("पहले अपना नाम लिखें!");
+  return;
+ }
+
+ wish.textContent =
+ "✨ "+name+" की ओर से आप सभी को दीपावली की हार्दिक शुभकामनाएँ! 🪔 आपका जीवन खुशियों और उजाले से भर जाए। 🎆";
+
+ burst();
 }
 
-function generateQR() {
-    const qr = document.getElementById("qrcode");
-    const status = document.getElementById("qrstatus");
+function shareWhatsApp(){
+ const text = wish.innerText + "\n\nहमारी दिवाली वेबसाइट:\n" +
+ window.location.href;
 
-    const websiteURL = window.location.href;
-
-    if (!websiteURL.startsWith("https://")) {
-        status.textContent = "पहले वेबसाइट को HTTPS पर खोलें।";
-        return;
-    }
-
-    status.textContent = "QR Code बनाया जा रहा है...";
-    qr.style.display = "block";
-
-    qr.onload = function() {
-        status.textContent =
-            "QR Code तैयार है! इसे स्कैन करके वेबसाइट खोलें।";
-    };
-
-    qr.onerror = function() {
-        qr.style.display = "none";
-        status.textContent =
-            "QR नहीं बन पाया। इंटरनेट कनेक्शन जाँचें और फिर कोशिश करें।";
-    };
-
-    qr.src =
-        "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data="
-        + encodeURIComponent(websiteURL);
+ window.open(
+  "https://wa.me/?text="+encodeURIComponent(text),
+  "_blank"
+ );
 }
+
+function makeQR(){
+ const img = document.getElementById("qr");
+ const msg = document.getElementById("qrmsg");
+
+ if(location.protocol !== "https:"){
+  msg.textContent="वेबसाइट HTTPS पर खोलें।";
+  return;
+ }
+
+ msg.textContent="QR कोड लोड हो रहा है...";
+ img.style.display="block";
+ img.onload=()=>msg.textContent="QR तैयार है! इसे स्कैन करें।";
+ img.onerror=()=>{
+  img.style.display="none";
+  msg.textContent="QR नहीं बना। इंटरनेट जाँचकर फिर कोशिश करें।";
+ };
+
+ img.src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data="+
+ encodeURIComponent(location.href);
+}
+
+/* आतिशबाजी एनिमेशन */
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+let particles=[];
+
+function resize(){
+ canvas.width=window.innerWidth;
+ canvas.height=window.innerHeight;
+}
+resize();
+window.addEventListener("resize",resize);
+
+function burst(){
+ const x=Math.random()*canvas.width;
+ const y=Math.random()*canvas.height*.55;
+ const colors=["#ffd700","#ff5733","#ff66cc","#66ffff","#ffffff"];
+
+ for(let i=0;i<65;i++){
+  const angle=Math.PI*2*i/65;
+  const speed=1+Math.random()*4;
+
+  particles.push({
+   x,y,
+   vx:Math.cos(angle)*speed,
+   vy:Math.sin(angle)*speed,
+   life:50+Math.random()*20,
+   color:colors[Math.floor(Math.random()*colors.length)]
+  });
+ }
+}
+
+function animate(){
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ particles=particles.filter(p=>p.life>0);
+
+ particles.forEach(p=>{
+  p.x+=p.vx;
+  p.y+=p.vy;
+  p.vy+=.035;
+  p.life--;
+
+  ctx.globalAlpha=Math.min(1,p.life/25);
+  ctx.fillStyle=p.color;
+  ctx.beginPath();
+  ctx.arc(p.x,p.y,2,0,Math.PI*2);
+  ctx.fill();
+ });
+
+ ctx.globalAlpha=1;
+ requestAnimationFrame(animate);
+}
+animate();
+
+setInterval(burst,1800);
 </script>
 
 </body>
