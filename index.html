@@ -299,11 +299,21 @@ async function shareCard(){
 }
 
 function fireworks(){
- const el=document.getElementById("firework");
- el.textContent="🎆 ✨ 🎇 ✨ 🎆";
- setTimeout(()=>el.textContent="",2500);
-}
+ const el = document.getElementById("firework");
 
+ el.innerHTML = `
+ <div style="font-size:40px;animation:burst 0.7s infinite alternate">
+ 🎆 ✨ 🎇 ✨ 🎆
+ </div>
+ <div style="font-size:30px;animation:burst 0.5s infinite alternate">
+ ✨ 🎆 🌟 🎇 ✨
+ </div>
+ `;
+
+ setTimeout(() => {
+   el.innerHTML = "";
+ }, 5000);
+}
 function makeQR(){
  const img=document.getElementById("qr");
  const msg=document.getElementById("qrmsg");
