@@ -1,41 +1,185 @@
-<!DOCTYPE html><html lang="hi">
+<!DOCTYPE html>
+<html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Website</title>
-  <style>
-    body {
-      background: #101827;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 40px 15px;
-    }
-    .box {
-      background: #1e293b;
-      padding: 25px;
-      border-radius: 15px;
-      max-width: 400px;
-      margin: auto;
-    }
-    h1 { color: #38bdf8; }
-    button {
-      background: #38bdf8;
-      color: #101827;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZeroTraceX | Cyber World</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #050807;
+    color: #00ff88;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+header {
+    padding: 22px 10px;
+    border-bottom: 1px solid #00ff88;
+    background: #09130e;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 27px;
+    text-shadow: 0 0 12px #00ff88;
+}
+
+header p {
+    color: #a4ffca;
+    font-size: 13px;
+}
+
+.box {
+    margin: 35px 15px;
+    padding: 25px 18px;
+    background: #0b1510;
+    border: 1px solid #00ff88;
+    border-radius: 15px;
+    box-shadow: 0 0 18px #003d22;
+}
+
+h2 {
+    color: #00ff88;
+}
+
+.description {
+    color: #d4ffe4;
+    line-height: 1.7;
+}
+
+button {
+    background: #00ff88;
+    color: #041008;
+    border: none;
+    padding: 13px 22px;
+    margin: 10px 5px;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+button:hover {
+    box-shadow: 0 0 15px #00ff88;
+}
+
+#message {
+    color: white;
+    margin-top: 18px;
+    overflow-wrap: anywhere;
+}
+
+#qrcode {
+    display: none;
+    margin: 20px auto;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    max-width: 100%;
+}
+
+footer {
+    padding: 20px 10px;
+    color: #8cae99;
+    font-size: 12px;
+}
+</style>
 </head>
+
 <body>
-  <div class="box">
-    <h1>Welcome! 🚀</h1>
-    <p>मेरी पहली वेबसाइट में आपका स्वागत है।</p>
-    <button onclick="alert('Website Successfully Working!')">
-      Click Here
-    </button>
-  </div>
+
+<header>
+    <h1>⚡ ZeroTraceX ⚡</h1>
+    <p>WELCOME TO MY CYBER WORLD</p>
+</header>
+
+<main>
+    <section class="box">
+        <h2>ACCESS GRANTED ✓</h2>
+
+        <p class="description">
+            मेरी वेबसाइट में आपका स्वागत है!<br>
+            Explore • Learn • Create
+        </p>
+
+        <button onclick="showMessage()">
+            ENTER CYBER WORLD
+        </button>
+
+        <p id="message">System Ready...</p>
+    </section>
+
+    <section class="box">
+        <h2>🌐 MY WEBSITE QR</h2>
+
+        <p class="description">
+            नीचे बटन दबाकर अपनी वेबसाइट का QR कोड बनाओ।
+            इसे स्कैन करके वेबसाइट खोली जा सकती है।
+        </p>
+
+        <button onclick="generateQR()">
+            GENERATE QR CODE
+        </button>
+
+        <div>
+            <img id="qrcode" alt="Website QR Code">
+        </div>
+
+        <p class="description" id="qrstatus"></p>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 ZeroTraceX | Created with HTML & CSS</p>
+    <p>Keep Learning. Keep Building.</p>
+</footer>
+
+<script>
+function showMessage() {
+    document.getElementById("message").textContent =
+        "⚡ Welcome! Cyber World Activated.";
+}
+
+function generateQR() {
+    const qr = document.getElementById("qrcode");
+    const status = document.getElementById("qrstatus");
+
+    const websiteURL = window.location.href;
+
+    if (!websiteURL.startsWith("https://")) {
+        status.textContent = "पहले वेबसाइट को HTTPS पर खोलें।";
+        return;
+    }
+
+    status.textContent = "QR Code बनाया जा रहा है...";
+    qr.style.display = "block";
+
+    qr.onload = function() {
+        status.textContent =
+            "QR Code तैयार है! इसे स्कैन करके वेबसाइट खोलें।";
+    };
+
+    qr.onerror = function() {
+        qr.style.display = "none";
+        status.textContent =
+            "QR नहीं बन पाया। इंटरनेट कनेक्शन जाँचें और फिर कोशिश करें।";
+    };
+
+    qr.src =
+        "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data="
+        + encodeURIComponent(websiteURL);
+}
+</script>
+
 </body>
 </html>
