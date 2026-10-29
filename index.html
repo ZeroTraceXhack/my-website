@@ -1,444 +1,399 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-site-verification" content="DrJElTC7dNRjqw8ECF97ahdwvBaATVkWQLGVbFHgHo8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="DrJElTC7dNRjqw8ECF97ahdwvBaATVkWQLGVbFHgHo8">
+  <title>✨ Happy Diwali ✨</title>
 
-<title>Happy Diwali 2026 – Greeting Cards</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-<style>
-* { box-sizing: border-box; }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  text-align: center;
-  color: white;
-  background: radial-gradient(circle at top, #5b1600, #160018 70%, #05000a);
-  overflow-x: hidden;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 20px 12px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      color: white;
+      background: linear-gradient(135deg, #16002c, #4b0082, #100020);
+      overflow-x: hidden;
+    }
 
-#fireworks {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 5;
-}
+    h1 {
+      color: #ffd700;
+      font-size: clamp(28px, 7vw, 44px);
+      text-shadow: 0 0 15px #ff9800;
+    }
 
-.container {
-  position: relative;
-  z-index: 2;
-  width: 92%;
-  max-width: 480px;
-  margin: 25px auto;
-  padding: 22px;
-  border: 2px solid #ffd700;
-  border-radius: 22px;
-  background: rgba(30, 0, 30, 0.94);
-  box-shadow: 0 0 25px #ff8c00;
-}
+    .subtitle {
+      font-size: 18px;
+      line-height: 1.6;
+    }
 
-h1 {
-  color: #ffd700;
-  font-size: 32px;
-  text-shadow: 0 0 15px orange;
-}
+    .controls {
+      max-width: 440px;
+      margin: 20px auto;
+      padding: 18px;
+      border: 1px solid #ffd700;
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.35);
+    }
 
-.subtitle {
-  color: #ffe6a3;
-  line-height: 1.6;
-}
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ffd700;
+      border-radius: 10px;
+      font-size: 16px;
+    }
 
-input, button {
-  width: 100%;
-  padding: 13px;
-  margin-top: 12px;
-  border-radius: 10px;
-  font-size: 16px;
-}
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #ffd700, #ff9800);
+      color: #26003d;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-input {
-  border: 1px solid #ffd700;
-  background: #fff9e8;
-  color: #250025;
-}
+    button:active {
+      transform: scale(0.98);
+    }
 
-button {
-  border: none;
-  background: linear-gradient(90deg, #ff9800, #ffd700);
-  color: #300018;
-  font-weight: bold;
-  cursor: pointer;
-}
+    #card {
+      max-width: 420px;
+      width: 100%;
+      margin: 24px auto;
+      padding: 22px 16px;
+      border: 3px solid #ffd700;
+      border-radius: 20px;
+      color: #fff8dc;
+      background: linear-gradient(145deg, #4b0082, #18002e);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+    }
 
-button:active { transform: scale(0.98); }
+    #card h2 {
+      color: #ffd700;
+      font-size: 30px;
+      margin-top: 8px;
+    }
 
-.card {
-  margin-top: 22px;
-  padding: 20px 12px;
-  border: 3px solid #ffdc55;
-  border-radius: 18px;
-  background: linear-gradient(145deg, #7c1600, #35004c);
-}
+    #cardMessage {
+      font-size: 19px;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
 
-.diya { font-size: 48px; }
+    #cardPhoto {
+      display: none;
+      max-width: 85%;
+      max-height: 230px;
+      margin: 12px auto;
+      border: 3px solid #ffd700;
+      border-radius: 12px;
+      object-fit: contain;
+    }
 
-#greeting {
-  font-size: 26px;
-  color: #ffe66d;
-  overflow-wrap: anywhere;
-}
+    .footer {
+      margin-top: 25px;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
 
-#message {
-  line-height: 1.8;
-  color: #fff1c1;
-}
+    #status {
+      min-height: 24px;
+      line-height: 1.5;
+      font-size: 14px;
+    }
 
-#preview {
-  display: none;
-  max-width: 90%;
-  max-height: 240px;
-  margin: 15px auto;
-  border: 3px solid gold;
-  border-radius: 12px;
-  object-fit: contain;
-}
-
-.footer {
-  font-size: 12px;
-  color: #e8c8e8;
-  margin-top: 20px;
-}
-
-#status {
-  font-size: 14px;
-  line-height: 1.6;
-  overflow-wrap: anywhere;
-}
-
-</style>
+    #fireworks {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
 </head>
 
 <body>
+  <canvas id="fireworks"></canvas>
 
-<canvas id="fireworks"></canvas>
-
-<div class="container">
-
-<h1>🪔 Happy Diwali 🪔</h1>
-
-<p class="subtitle">✨ रोशनी, खुशियों और प्यार का त्योहार ✨</p>
-
-<input id="nameInput" type="text" maxlength="50"
-placeholder="अपना नाम लिखें">
-
-<input id="photoInput" type="file" accept="image/*">
-
-<img id="preview" alt="आपकी फोटो">
-
-<button onclick="makeGreeting()">🎉 मेरा ग्रीटिंग कार्ड बनाओ</button>
-
-<div class="card" id="greetingCard">
-  <div class="diya">🪔</div>
-  <h2 id="greeting">शुभ दीपावली! 🪔</h2>
-  <p id="message">
-    आपके जीवन में सुख, शांति और समृद्धि आए।
-    आपकी हर खुशी रोशनी की तरह चमकती रहे।
+  <h1>🪔 शुभ दीपावली 🪔</h1>
+  <p class="subtitle">
+    ✨ खुशियों और रोशनी का त्योहार ✨<br>
+    अपने दोस्तों और परिवार को शुभकामनाएँ भेजें।
   </p>
-  <img id="cardPhoto" alt="" style="display:none;max-width:90%;max-height:240px;border:3px solid gold;border-radius:12px;margin:10px auto;">
-  <div class="diya">🪔 ✨ 🪔</div>
-  <p>✨ आपको और आपके परिवार को दीपावली की शुभकामनाएँ ✨</p>
-</div>
 
-<button onclick="downloadCard()">⬇️ ग्रीटिंग कार्ड डाउनलोड करें</button>
+  <div class="controls">
+    <input
+      type="text"
+      id="nameInput"
+      placeholder="अपना या दोस्त का नाम लिखें"
+      oninput="makeGreeting()"
+    >
 
-<button onclick="shareCard()">📸 फोटो के साथ शेयर करें</button>
+    <input
+      type="file"
+      id="photoInput"
+      accept="image/*"
+    >
 
-<button onclick="shareWebsite()">🔗 वेबसाइट का लिंक WhatsApp पर भेजें</button>
+    <button onclick="makeGreeting()">
+      🎨 कार्ड तैयार करें
+    </button>
 
-<button onclick="shareWhatsAppText()">💬 WhatsApp पर शुभकामना भेजें</button>
+    <button onclick="shareEverything()">
+      📲 शेयर कार्ड WhatsApp पर
+    </button>
 
-<p id="status" role="status" aria-live="polite"></p>
+    <p id="status" aria-live="polite"></p>
+  </div>
 
-<button onclick="startFireworks()">🎆 आतिशबाजी शुरू करें</button>
-<button onclick="stopFireworks()">आतिशबाजी रोकें</button>
+  <div id="card">
+    <h2>✨ Happy Diwali ✨</h2>
+    <img id="cardPhoto" alt="Greeting card photo">
 
-<div class="footer">Made with ❤️ for Diwali</div>
+    <p id="cardMessage">
+      आपको और आपके परिवार को दीपावली की हार्दिक शुभकामनाएँ! 🪔
+    </p>
 
-</div>
+    <p>💖 आपका जीवन खुशियों से रोशन रहे 💖</p>
+    <p>🎆 शुभ दीपावली 🎆</p>
+  </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <div class="footer">
+    मेरी वेबसाइट पर भी शुभकामनाएँ देखें:<br>
+    https://zerotracexhack.github.io/my-website/
+  </div>
 
-<script>
-const WEBSITE_URL = "https://zerotracexhack.github.io/my-website/";
+  <script>
+    const websiteURL =
+      "https://zerotracexhack.github.io/my-website/";
 
-const nameInput = document.getElementById("nameInput");
-const photoInput = document.getElementById("photoInput");
-const preview = document.getElementById("preview");
-const cardPhoto = document.getElementById("cardPhoto");
-const statusBox = document.getElementById("status");
+    function makeGreeting() {
+      const name =
+        document.getElementById("nameInput").value.trim();
 
-function setStatus(text) {
-  statusBox.textContent = text;
-}
+      const greetingName = name || "आपको और आपके परिवार को";
 
-function makeGreeting() {
-  const name = nameInput.value.trim();
+      document.getElementById("cardMessage").innerText =
+        "🪔 शुभ दीपावली, " + greetingName +
+        "! आपके जीवन में सुख, शांति, स्वास्थ्य और समृद्धि आए। " +
+        "आपका हर दिन खुशियों से रोशन रहे। ✨🎆";
+    }
 
-  document.getElementById("greeting").textContent =
-    name ? "शुभ दीपावली, " + name + "! 🪔" : "शुभ दीपावली! 🪔";
+    document.getElementById("photoInput").addEventListener(
+      "change",
+      function(event) {
+        const file = event.target.files[0];
 
-  document.getElementById("message").textContent =
-    "आपके जीवन में खुशियाँ, सफलता और समृद्धि आए। " +
-    "आपका हर दिन दीपावली की रोशनी जैसा चमकता रहे! ✨";
+        if (!file) return;
 
-  cardPhoto.src = preview.src;
-  cardPhoto.style.display =
-    preview.style.display === "none" ? "none" : "block";
+        if (!file.type.startsWith("image/")) {
+          alert("कृपया फोटो वाली फाइल चुनें।");
+          return;
+        }
 
-  setStatus("आपका ग्रीटिंग कार्ड तैयार है!");
-}
+        const reader = new FileReader();
 
-photoInput.addEventListener("change", function() {
-  const file = this.files[0];
-  if (!file) return;
+        reader.onload = function(e) {
+          const photo = document.getElementById("cardPhoto");
+          photo.src = e.target.result;
+          photo.style.display = "block";
+        };
 
-  if (!file.type.startsWith("image/")) {
-    setStatus("कृपया सही फोटो चुनें।");
-    this.value = "";
-    return;
-  }
-
-  if (file.size > 8 * 1024 * 1024) {
-    setStatus("कृपया 8 MB से छोटी फोटो चुनें।");
-    this.value = "";
-    return;
-  }
-
-  const reader = new FileReader();
-
-  reader.onload = function(event) {
-    preview.onload = function() {
-      preview.style.display = "block";
-      cardPhoto.src = event.target.result;
-      cardPhoto.style.display = "block";
-      setStatus("फोटो कार्ड में जोड़ दी गई है।");
-    };
-
-    preview.src = event.target.result;
-  };
-
-  reader.readAsDataURL(file);
-});
-
-async function createCardImage() {
-  if (typeof html2canvas !== "function") {
-    throw new Error("कार्ड बनाने की लाइब्रेरी नहीं खुली। इंटरनेट जाँचें।");
-  }
-
-  makeGreeting();
-
-  if (preview.style.display !== "none" && !preview.complete) {
-    await new Promise((resolve, reject) => {
-      preview.onload = resolve;
-      preview.onerror = reject;
-    });
-  }
-
-  const canvas = await html2canvas(
-    document.getElementById("greetingCard"),
-    { backgroundColor: null, scale: 2, useCORS: true }
-  );
-
-  return new Promise((resolve, reject) => {
-    canvas.toBlob(blob => {
-      if (blob) resolve(blob);
-      else reject(new Error("कार्ड की फोटो नहीं बन पाई।"));
-    }, "image/png");
-  });
-}
-
-async function downloadCard() {
-  try {
-    setStatus("कार्ड तैयार हो रहा है...");
-    const blob = await createCardImage();
-    const link = document.createElement("a");
-    const objectURL = URL.createObjectURL(blob);
-
-    link.href = objectURL;
-    link.download = "Happy-Diwali-Greeting.png";
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-
-    setTimeout(() => URL.revokeObjectURL(objectURL), 3000);
-    setStatus("डाउनलोड शुरू करने का अनुरोध भेज दिया गया है।");
-  } catch (error) {
-    setStatus(error.message);
-  }
-}
-
-async function shareCard() {
-  try {
-    setStatus("कार्ड की फोटो तैयार हो रही है...");
-    const blob = await createCardImage();
-
-    const file = new File(
-      [blob],
-      "Happy-Diwali-Greeting.png",
-      { type: "image/png" }
+        reader.readAsDataURL(file);
+      }
     );
 
-    if (navigator.canShare && navigator.share &&
-        navigator.canShare({ files: [file] })) {
+    async function createCardImage() {
+      makeGreeting();
 
-      await navigator.share({
-        files: [file],
-        title: "Happy Diwali",
-        text: "🪔 शुभ दीपावली! मेरी वेबसाइट भी देखें: " + WEBSITE_URL
+      const card = document.getElementById("card");
+
+      const canvas = await html2canvas(card, {
+        scale: 2,
+        backgroundColor: "#24003f",
+        useCORS: true
       });
 
-      setStatus("शेयर मेन्यू खुल गया। WhatsApp चुनें।");
-
-    } else {
-      await downloadCard();
-
-      setStatus(
-        "फोटो डाउनलोड करें। फिर WhatsApp में फोटो के साथ वेबसाइट का लिंक भेजें।"
-      );
-
-      shareWebsite();
+      return new Promise(function(resolve, reject) {
+        canvas.toBlob(function(blob) {
+          if (blob) {
+            resolve(blob);
+          } else {
+            reject(new Error("Card image could not be created."));
+          }
+        }, "image/png");
+      });
     }
-  } catch (error) {
-    if (error.name === "AbortError") {
-      setStatus("शेयर करना रद्द कर दिया गया।");
-    } else {
-      setStatus(error.message || "फोटो शेयर नहीं हो पाई।");
+
+    async function downloadCard() {
+      const blob = await createCardImage();
+      const imageURL = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = imageURL;
+      link.download = "Happy-Diwali-Greeting.png";
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      setTimeout(function() {
+        URL.revokeObjectURL(imageURL);
+      }, 3000);
+
+      return blob;
     }
-  }
-}
 
-function shareWebsite() {
-  const text =
-    "🪔 Happy Diwali! ✨\n\n" +
-    "अपना ग्रीटिंग कार्ड यहाँ बनाएँ और डाउनलोड करें:\n" +
-    WEBSITE_URL;
+    async function shareEverything() {
+      const status = document.getElementById("status");
+      const name =
+        document.getElementById("nameInput").value.trim() || "आप सभी";
 
-  window.open(
-    "https://wa.me/?text=" + encodeURIComponent(text),
-    "_blank"
-  );
-}
+      const message =
+        "🪔 शुभ दीपावली, " + name + "! ✨\n\n" +
+        "आपके जीवन में सुख, शांति और समृद्धि आए। 🎆\n\n" +
+        "मेरा ग्रीटिंग कार्ड और शुभकामनाएँ यहाँ देखें:\n" +
+        websiteURL;
 
-function shareWhatsAppText() {
-  const name = nameInput.value.trim() || "आप सभी";
+      status.innerText = "कृपया प्रतीक्षा करें, कार्ड तैयार हो रहा है...";
 
-  const text =
-    "🪔 शुभ दीपावली, " + name + "! ✨\n" +
-    "आपके जीवन में सुख, शांति और समृद्धि आए। 🎆\n\n" +
-    "अपना ग्रीटिंग कार्ड यहाँ बनाएँ:\n" +
-    WEBSITE_URL;
+      try {
+        const blob = await createCardImage();
 
-  window.open(
-    "https://wa.me/?text=" + encodeURIComponent(text),
-    "_blank"
-  );
-}
+        const file = new File(
+          [blob],
+          "Happy-Diwali-Greeting.png",
+          { type: "image/png" }
+        );
 
-/* लगातार चलने वाली डिजिटल आतिशबाजी */
+        if (
+          navigator.share &&
+          navigator.canShare &&
+          navigator.canShare({ files: [file] })
+        ) {
+          await navigator.share({
+            files: [file],
+            title: "Happy Diwali Greeting",
+            text: message
+          });
 
-const canvas = document.getElementById("fireworks");
-const ctx = canvas.getContext("2d");
+          status.innerText =
+            "शेयर मेनू खुल गया है। WhatsApp चुनकर भेजें।";
+        } else {
+          const imageURL = URL.createObjectURL(blob);
+          const link = document.createElement("a");
 
-let particles = [];
-let animationId = null;
+          link.href = imageURL;
+          link.download = "Happy-Diwali-Greeting.png";
 
-function resizeCanvas() {
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
 
-  canvas.width = Math.floor(window.innerWidth * dpr);
-  canvas.height = Math.floor(window.innerHeight * dpr);
+          setTimeout(function() {
+            URL.revokeObjectURL(imageURL);
+          }, 3000);
 
-  canvas.style.width = window.innerWidth + "px";
-  canvas.style.height = window.innerHeight + "px";
+          window.open(
+            "https://wa.me/?text=" + encodeURIComponent(message),
+            "_blank"
+          );
 
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-}
+          status.innerText =
+            "फोटो डाउनलोड हुई है और WhatsApp खुल रहा है। " +
+            "फोटो को WhatsApp में अलग से अटैच करके भेजें।";
+        }
+      } catch (error) {
+        if (error.name === "AbortError") {
+          status.innerText = "शेयर करना रद्द कर दिया गया।";
+        } else {
+          console.error(error);
+          status.innerText =
+            "शेयर नहीं हो पाया। इंटरनेट जाँचें और दोबारा कोशिश करें।";
+        }
+      }
+    }
 
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
+    makeGreeting();
 
-function burst(x, y) {
-  const colors = [
-    "#ffcc00", "#ff3300", "#ff66ff",
-    "#00ffff", "#ffffff", "#66ff66"
-  ];
+    // लगातार आतिशबाजी
+    const canvas = document.getElementById("fireworks");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
 
-  for (let i = 0; i < 65; i++) {
-    const angle = Math.random() * Math.PI * 2;
-    const speed = Math.random() * 4 + 1;
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
 
-    particles.push({
-      x, y,
-      vx: Math.cos(angle) * speed,
-      vy: Math.sin(angle) * speed,
-      life: 70 + Math.random() * 30,
-      color: colors[Math.floor(Math.random() * colors.length)]
-    });
-  }
-}
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
 
-function animate() {
-  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    function createFirework() {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height * 0.65;
+      const count = 35 + Math.floor(Math.random() * 25);
 
-  if (Math.random() < 0.045) {
-    burst(
-      Math.random() * window.innerWidth,
-      Math.random() * window.innerHeight * 0.65
-    );
-  }
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 1 + Math.random() * 3;
 
-  particles = particles.filter(p => p.life > 0);
+        particles.push({
+          x: x,
+          y: y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          life: 45 + Math.random() * 25,
+          maxLife: 70,
+          size: 1 + Math.random() * 2
+        });
+      }
+    }
 
-  for (const p of particles) {
-    p.x += p.vx;
-    p.y += p.vy;
-    p.vy += 0.025;
-    p.vx *= 0.99;
-    p.vy *= 0.99;
-    p.life--;
+    function animateFireworks() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.globalAlpha = Math.max(0, p.life / 100);
-    ctx.fillStyle = p.color;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2);
-    ctx.fill();
-  }
+      if (Math.random() < 0.06) {
+        createFirework();
+      }
 
-  ctx.globalAlpha = 1;
-  animationId = requestAnimationFrame(animate);
-}
+      particles = particles.filter(function(p) {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.025;
+        p.life--;
 
-function startFireworks() {
-  if (animationId === null) animate();
-}
+        ctx.globalAlpha = Math.max(0, p.life / p.maxLife);
+        ctx.fillStyle =
+          Math.random() > 0.5 ? "#ffd700" : "#ff8c00";
 
-function stopFireworks() {
-  if (animationId !== null) {
-    cancelAnimationFrame(animationId);
-    animationId = null;
-  }
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
 
-  particles = [];
-  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-}
+        return p.life > 0;
+      });
 
-startFireworks();
-</script>
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(animateFireworks);
+    }
 
+    animateFireworks();
+  </script>
 </body>
 </html>
