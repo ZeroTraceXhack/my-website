@@ -3,16 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="DrJElTC7dNRjqw8ECF97ahdwvBaATVkWQLGVbFHgHo8">
 
-<meta name="google-site-verification"
-content="DrJElTC7dNRjqw8ECF97ahdwvBaATVkWQLGVbFHgHo8">
-
-<title>Happy Diwali 2026 – Wishes & Greeting Cards</title>
+<title>Happy Diwali 2026 – Greeting Cards</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -79,9 +75,7 @@ button {
   cursor: pointer;
 }
 
-button:active {
-  transform: scale(0.98);
-}
+button:active { transform: scale(0.98); }
 
 .card {
   margin-top: 22px;
@@ -89,12 +83,9 @@ button:active {
   border: 3px solid #ffdc55;
   border-radius: 18px;
   background: linear-gradient(145deg, #7c1600, #35004c);
-  box-shadow: inset 0 0 18px rgba(255,215,0,0.2);
 }
 
-.diya {
-  font-size: 48px;
-}
+.diya { font-size: 48px; }
 
 #greeting {
   font-size: 26px;
@@ -105,12 +96,10 @@ button:active {
 #message {
   line-height: 1.8;
   color: #fff1c1;
-  overflow-wrap: anywhere;
 }
 
 #preview {
   display: none;
-  width: auto;
   max-width: 90%;
   max-height: 240px;
   margin: 15px auto;
@@ -125,31 +114,12 @@ button:active {
   margin-top: 20px;
 }
 
-.note {
-  font-size: 13px;
-  color: #ffe6a3;
-  line-height: 1.6;
-}
-
 #status {
   font-size: 14px;
   line-height: 1.6;
   overflow-wrap: anywhere;
 }
 
-@media (max-width: 380px) {
-  .container {
-    padding: 14px;
-  }
-
-  h1 {
-    font-size: 27px;
-  }
-
-  #greeting {
-    font-size: 22px;
-  }
-}
 </style>
 </head>
 
@@ -159,96 +129,61 @@ button:active {
 
 <div class="container">
 
-  <h1>🪔 Happy Diwali 🪔</h1>
+<h1>🪔 Happy Diwali 🪔</h1>
 
-  <p class="subtitle">
-    ✨ रोशनी, खुशियों और प्यार का त्योहार ✨
+<p class="subtitle">✨ रोशनी, खुशियों और प्यार का त्योहार ✨</p>
+
+<input id="nameInput" type="text" maxlength="50"
+placeholder="अपना नाम लिखें">
+
+<input id="photoInput" type="file" accept="image/*">
+
+<img id="preview" alt="आपकी फोटो">
+
+<button onclick="makeGreeting()">🎉 मेरा ग्रीटिंग कार्ड बनाओ</button>
+
+<div class="card" id="greetingCard">
+  <div class="diya">🪔</div>
+  <h2 id="greeting">शुभ दीपावली! 🪔</h2>
+  <p id="message">
+    आपके जीवन में सुख, शांति और समृद्धि आए।
+    आपकी हर खुशी रोशनी की तरह चमकती रहे।
   </p>
+  <img id="cardPhoto" alt="" style="display:none;max-width:90%;max-height:240px;border:3px solid gold;border-radius:12px;margin:10px auto;">
+  <div class="diya">🪔 ✨ 🪔</div>
+  <p>✨ आपको और आपके परिवार को दीपावली की शुभकामनाएँ ✨</p>
+</div>
 
-  <input
-    id="nameInput"
-    type="text"
-    maxlength="50"
-    placeholder="अपना नाम लिखें"
-    autocomplete="name"
-  >
+<button onclick="downloadCard()">⬇️ ग्रीटिंग कार्ड डाउनलोड करें</button>
 
-  <input
-    id="photoInput"
-    type="file"
-    accept="image/jpeg,image/png,image/webp"
-  >
+<button onclick="shareCard()">📸 फोटो के साथ शेयर करें</button>
 
-  <p class="note">
-    अपनी फोटो चुनें और अपना ग्रीटिंग कार्ड बनाएँ।
-  </p>
+<button onclick="shareWebsite()">🔗 वेबसाइट का लिंक WhatsApp पर भेजें</button>
 
-  <button onclick="makeGreeting()">
-    🎉 मेरा ग्रीटिंग कार्ड बनाओ
-  </button>
+<button onclick="shareWhatsAppText()">💬 WhatsApp पर शुभकामना भेजें</button>
 
-  <div class="card" id="greetingCard">
+<p id="status" role="status" aria-live="polite"></p>
 
-    <div class="diya">🪔</div>
+<button onclick="startFireworks()">🎆 आतिशबाजी शुरू करें</button>
+<button onclick="stopFireworks()">आतिशबाजी रोकें</button>
 
-    <h2 id="greeting">शुभ दीपावली! 🪔</h2>
-
-    <p id="message">
-      आपके जीवन में सुख, शांति और समृद्धि आए।
-      आपकी हर खुशी रोशनी की तरह चमकती रहे।
-    </p>
-
-    <img id="preview" alt="ग्रीटिंग कार्ड की फोटो">
-
-    <div class="diya">🪔 ✨ 🪔</div>
-
-    <p style="color:#ffe6a3;font-size:13px;">
-      ✨ आपके और आपके परिवार को दीपावली की शुभकामनाएँ ✨
-    </p>
-
-  </div>
-
-  <button id="downloadBtn" onclick="downloadCard()">
-    ⬇️ ग्रीटिंग कार्ड डाउनलोड करें
-  </button>
-
-  <button onclick="shareCard()">
-    📲 फोटो के साथ WhatsApp पर शेयर करें
-  </button>
-
-  <button onclick="shareWhatsAppText()">
-    💬 WhatsApp पर संदेश शेयर करें
-  </button>
-
-  <p id="status" role="status" aria-live="polite"></p>
-
-  <button onclick="startFireworks()">
-    🎆 आतिशबाजी शुरू करें
-  </button>
-
-  <button onclick="stopFireworks()">
-    आतिशबाजी रोकें
-  </button>
-
-  <div class="footer">
-    Made with ❤️ for Diwali
-  </div>
+<div class="footer">Made with ❤️ for Diwali</div>
 
 </div>
 
-<!-- कार्ड की फोटो बनाने के लिए html2canvas -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <script>
+const WEBSITE_URL = "https://zerotracexhack.github.io/my-website/";
+
 const nameInput = document.getElementById("nameInput");
 const photoInput = document.getElementById("photoInput");
 const preview = document.getElementById("preview");
+const cardPhoto = document.getElementById("cardPhoto");
 const statusBox = document.getElementById("status");
 
-let photoReady = Promise.resolve();
-
-function setStatus(message) {
-  statusBox.textContent = message;
+function setStatus(text) {
+  statusBox.textContent = text;
 }
 
 function makeGreeting() {
@@ -261,18 +196,16 @@ function makeGreeting() {
     "आपके जीवन में खुशियाँ, सफलता और समृद्धि आए। " +
     "आपका हर दिन दीपावली की रोशनी जैसा चमकता रहे! ✨";
 
+  cardPhoto.src = preview.src;
+  cardPhoto.style.display =
+    preview.style.display === "none" ? "none" : "block";
+
   setStatus("आपका ग्रीटिंग कार्ड तैयार है!");
 }
 
 photoInput.addEventListener("change", function() {
   const file = this.files[0];
-
-  if (!file) {
-    preview.removeAttribute("src");
-    preview.style.display = "none";
-    photoReady = Promise.resolve();
-    return;
-  }
+  if (!file) return;
 
   if (!file.type.startsWith("image/")) {
     setStatus("कृपया सही फोटो चुनें।");
@@ -281,49 +214,33 @@ photoInput.addEventListener("change", function() {
   }
 
   if (file.size > 8 * 1024 * 1024) {
-    setStatus("फोटो 8 MB से छोटी चुनें।");
+    setStatus("कृपया 8 MB से छोटी फोटो चुनें।");
     this.value = "";
     return;
   }
 
-  photoReady = new Promise((resolve, reject) => {
-    const reader = new FileReader();
+  const reader = new FileReader();
 
-    reader.onload = function(event) {
-      preview.onload = function() {
-        preview.style.display = "block";
-        setStatus("फोटो कार्ड में जोड़ दी गई है।");
-        resolve();
-      };
-
-      preview.onerror = function() {
-        preview.style.display = "none";
-        reject(new Error("फोटो नहीं खुल सकी।"));
-      };
-
-      preview.src = event.target.result;
+  reader.onload = function(event) {
+    preview.onload = function() {
+      preview.style.display = "block";
+      cardPhoto.src = event.target.result;
+      cardPhoto.style.display = "block";
+      setStatus("फोटो कार्ड में जोड़ दी गई है।");
     };
 
-    reader.onerror = function() {
-      reject(new Error("फोटो पढ़ी नहीं जा सकी।"));
-    };
+    preview.src = event.target.result;
+  };
 
-    reader.readAsDataURL(file);
-  });
+  reader.readAsDataURL(file);
 });
 
 async function createCardImage() {
   if (typeof html2canvas !== "function") {
-    throw new Error(
-      "कार्ड बनाने की लाइब्रेरी लोड नहीं हुई। इंटरनेट कनेक्शन जाँचें।"
-    );
+    throw new Error("कार्ड बनाने की लाइब्रेरी नहीं खुली। इंटरनेट जाँचें।");
   }
 
-  await photoReady;
-
-  if (document.fonts && document.fonts.ready) {
-    await document.fonts.ready;
-  }
+  makeGreeting();
 
   if (preview.style.display !== "none" && !preview.complete) {
     await new Promise((resolve, reject) => {
@@ -332,104 +249,69 @@ async function createCardImage() {
     });
   }
 
-  const card = document.getElementById("greetingCard");
-
-  const canvas = await html2canvas(card, {
-    backgroundColor: null,
-    scale: 2,
-    useCORS: true,
-    logging: false
-  });
+  const canvas = await html2canvas(
+    document.getElementById("greetingCard"),
+    { backgroundColor: null, scale: 2, useCORS: true }
+  );
 
   return new Promise((resolve, reject) => {
-    canvas.toBlob(function(blob) {
-      if (blob) {
-        resolve(blob);
-      } else {
-        reject(new Error("कार्ड की फोटो नहीं बन पाई।"));
-      }
+    canvas.toBlob(blob => {
+      if (blob) resolve(blob);
+      else reject(new Error("कार्ड की फोटो नहीं बन पाई।"));
     }, "image/png");
   });
 }
 
 async function downloadCard() {
-  const button = document.getElementById("downloadBtn");
-
-  button.disabled = true;
-  setStatus("कार्ड तैयार किया जा रहा है...");
-
   try {
+    setStatus("कार्ड तैयार हो रहा है...");
     const blob = await createCardImage();
-    const imageURL = URL.createObjectURL(blob);
-
     const link = document.createElement("a");
-    link.href = imageURL;
-    link.download = "Happy-Diwali-Greeting.png";
+    const objectURL = URL.createObjectURL(blob);
 
+    link.href = objectURL;
+    link.download = "Happy-Diwali-Greeting.png";
     document.body.appendChild(link);
     link.click();
     link.remove();
 
-    setTimeout(() => URL.revokeObjectURL(imageURL), 2000);
-
-    setStatus(
-      "कार्ड डाउनलोड करने का अनुरोध भेज दिया गया है। " +
-      "अगर डाउनलोड न दिखे, तो ब्राउज़र के Downloads फोल्डर में देखें।"
-    );
+    setTimeout(() => URL.revokeObjectURL(objectURL), 3000);
+    setStatus("डाउनलोड शुरू करने का अनुरोध भेज दिया गया है।");
   } catch (error) {
-    setStatus(error.message || "कार्ड डाउनलोड नहीं हो पाया।");
-  } finally {
-    button.disabled = false;
+    setStatus(error.message);
   }
 }
 
 async function shareCard() {
-  setStatus("फोटो तैयार की जा रही है...");
-
   try {
+    setStatus("कार्ड की फोटो तैयार हो रही है...");
     const blob = await createCardImage();
+
     const file = new File(
       [blob],
       "Happy-Diwali-Greeting.png",
       { type: "image/png" }
     );
 
-    if (
-      navigator.share &&
-      navigator.canShare &&
-      navigator.canShare({ files: [file] })
-    ) {
+    if (navigator.canShare && navigator.share &&
+        navigator.canShare({ files: [file] })) {
+
       await navigator.share({
         files: [file],
         title: "Happy Diwali",
-        text: "🪔 शुभ दीपावली! ✨"
+        text: "🪔 शुभ दीपावली! मेरी वेबसाइट भी देखें: " + WEBSITE_URL
       });
 
-      setStatus("शेयर मेन्यू खुल गया। WhatsApp चुनकर फोटो भेजें।");
+      setStatus("शेयर मेन्यू खुल गया। WhatsApp चुनें।");
+
     } else {
-      const imageURL = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-
-      link.href = imageURL;
-      link.download = "Happy-Diwali-Greeting.png";
-
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-
-      setTimeout(() => URL.revokeObjectURL(imageURL), 2000);
+      await downloadCard();
 
       setStatus(
-        "इस ब्राउज़र में फोटो सीधे शेयर करना उपलब्ध नहीं है। " +
-        "फोटो डाउनलोड करें, फिर WhatsApp में अटैचमेंट से भेजें।"
+        "फोटो डाउनलोड करें। फिर WhatsApp में फोटो के साथ वेबसाइट का लिंक भेजें।"
       );
 
-      window.open(
-        "https://wa.me/?text=" +
-        encodeURIComponent("🪔 शुभ दीपावली! ✨ " +
-        "https://zerotracexhack.github.io/my-website/"),
-        "_blank"
-      );
+      shareWebsite();
     }
   } catch (error) {
     if (error.name === "AbortError") {
@@ -440,14 +322,11 @@ async function shareCard() {
   }
 }
 
-function shareWhatsAppText() {
-  const name = nameInput.value.trim() || "आप सभी";
-
+function shareWebsite() {
   const text =
-    "🪔 शुभ दीपावली, " + name + "! ✨\n" +
-    "आपके जीवन में सुख, शांति और समृद्धि आए। 🎆\n\n" +
-    "मेरा ग्रीटिंग कार्ड यहाँ देखें:\n" +
-    "https://zerotracexhack.github.io/my-website/";
+    "🪔 Happy Diwali! ✨\n\n" +
+    "अपना ग्रीटिंग कार्ड यहाँ बनाएँ और डाउनलोड करें:\n" +
+    WEBSITE_URL;
 
   window.open(
     "https://wa.me/?text=" + encodeURIComponent(text),
@@ -455,7 +334,22 @@ function shareWhatsAppText() {
   );
 }
 
-/* डिजिटल आतिशबाजी — पहले की तरह लगातार चलती रहेगी */
+function shareWhatsAppText() {
+  const name = nameInput.value.trim() || "आप सभी";
+
+  const text =
+    "🪔 शुभ दीपावली, " + name + "! ✨\n" +
+    "आपके जीवन में सुख, शांति और समृद्धि आए। 🎆\n\n" +
+    "अपना ग्रीटिंग कार्ड यहाँ बनाएँ:\n" +
+    WEBSITE_URL;
+
+  window.open(
+    "https://wa.me/?text=" + encodeURIComponent(text),
+    "_blank"
+  );
+}
+
+/* लगातार चलने वाली डिजिटल आतिशबाजी */
 
 const canvas = document.getElementById("fireworks");
 const ctx = canvas.getContext("2d");
@@ -489,8 +383,7 @@ function burst(x, y) {
     const speed = Math.random() * 4 + 1;
 
     particles.push({
-      x: x,
-      y: y,
+      x, y,
       vx: Math.cos(angle) * speed,
       vy: Math.sin(angle) * speed,
       life: 70 + Math.random() * 30,
@@ -531,9 +424,7 @@ function animate() {
 }
 
 function startFireworks() {
-  if (animationId === null) {
-    animate();
-  }
+  if (animationId === null) animate();
 }
 
 function stopFireworks() {
